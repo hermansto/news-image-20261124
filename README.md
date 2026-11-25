@@ -1,35 +1,51 @@
-# The Day's World — Tuesday, 24 November 2026
+# The World Ledger — 24 November 2026
 
-[![make.fun · news-image-20261124](https://make.fun/badge/news-image-20261124.svg)](https://make.fun/bounty/news-image-20261124)
-[![rank](https://make.fun/badge/news-image-20261124/hermansto/news-image-20261124/rank.svg)](https://make.fun/bounty/news-image-20261124/leaderboard)
-[![reward](https://make.fun/badge/news-image-20261124/hermansto/news-image-20261124/reward.svg)](https://make.fun/bounty/news-image-20261124)
+[![Bounty](https://make.fun/badge/news-image-20261124.svg)](https://make.fun/bounty/news-image-20261124)
+[![Rank](https://make.fun/badge/news-image-20261124/hermansto/news-image-20261124/rank.svg)](https://make.fun/bounty/news-image-20261124)
+[![Reward](https://make.fun/badge/news-image-20261124/hermansto/news-image-20261124/reward.svg)](https://make.fun/bounty/news-image-20261124)
 
-One day of real world news as a single 1024x1024 newspaper front page,
-for the make.fun daily news image contest.
+A one-page newspaper front page for Tuesday, 24 November 2026, drawn
+entirely in code. No photographs, no downloaded pictures, no faces.
 
-## The front page
+## The four stories
 
-- **Wall St roars as Huang returns** — Nvidia up 31.5% as its board
-  reinstates Jensen Huang; Nasdaq jumps 6.5% after Friday's rout.
-- **COP31 collapses with no deal** — the longest climate summit on
-  record ends in Antalya with fossil fuels splitting the talks.
-- **Hormuz on edge as tankers hit** — two tankers struck; Iran vows to
-  counter a US blockade threat.
+All four were checked against the Reuters world-news summary for
+24 November 2026, and each one carries its source line on the page:
 
-Plus ten more stories from Mercury to Geneva, a UTC timeline, a numbers
-strip (S&P +4.7%, Nasdaq +6.5%, Dow +3.0%, Nvidia +31.5%, Bitcoin
-$61,000, gold $3,666), and eight more items under "Also today".
+1. **Zelenskiy confirms Ukraine hit Russian ship in Gulf of Finland** —
+   the Ukrainian president confirmed on Tuesday that Ukraine was behind
+   a drone strike on a Russian cargo ship; Norway urged caution.
+2. **Israeli strike kills Hamas security chief in Gaza** — Naeem Abu
+   Nahel, director of Hamas' internal security apparatus, was killed
+   with six others, including two police officers, medics and police said.
+3. **Russian attack kills two in Zaporizhzhia** — an overnight attack
+   killed two people and wounded 40, including four children, and struck
+   an apartment building, the regional governor said.
+4. **Houthis 60 km from Aden, Yemeni forces say city will hold** —
+   Houthi fighters pushed to within 60 km of Aden, Yemen's military said,
+   and the military said the city will not be captured.
 
-Every story carries a certainty tag — CONFIRMED only where two or more
-major sources agree, DEVELOPING where the facts are still coming in —
-and a source line.
+Nothing unconfirmed is printed as fact. Details that could not be
+verified are left out entirely.
 
-## Run it
+## How it is made
+
+`main.py` uses only the Python standard library and Pillow. Every
+illustration — the ship at sea, the town blocks, the two bars for the
+Zaporizhzhia figures, and the Aden coastline sketch — is drawn with
+shapes. Text is wrapped by measuring it with the font first, so no
+two text bands overlap.
+
+Run it with:
 
 ```sh
-python3 main.py
+MAKEFUN_OUTPUT_DIR=/tmp/news24-rebuild2-out python3 main.py
 ```
 
-Pure Python 3 standard library: no network, no fonts on disk, no
-randomness. It writes `entry.png` (1024x1024) to `$MAKEFUN_OUTPUT_DIR`
-or `/output` by default. Two runs are byte-identical.
+It writes only `entry.png` into that output directory, then reads the
+file back and checks it is 1024x1024. Two runs give a byte-identical
+file: there are no timestamps and no unseeded randomness in the image.
+
+## Licence
+
+MIT — see `LICENSE`.
